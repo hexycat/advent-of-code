@@ -1,0 +1,13 @@
+with open('input','r') as f:
+  recipes = f.read().strip()
+
+score = '37'
+elf1 = 0
+elf2 = 1
+while recipes not in score[-7:]:
+    score += str(int(score[elf1]) + int(score[elf2]))
+    elf1 = (elf1 + int(score[elf1]) + 1) % len(score)
+    elf2 = (elf2 + int(score[elf2]) + 1) % len(score)
+
+print('Answer part 1:', score[int(recipes):int(recipes)+10])
+print('Answer part 2:', score.index(recipes))
